@@ -1,0 +1,12 @@
+This is a set of management scripts for ssh keys.  I use them to provide
+ways of invalidating and updating keys remotely.
+
+As the user with access would already have permission to do all operations
+that drive the process, this script merely automates the key roll-over,
+and invalidation operations.
+
+An invalidated key would require an alternate (if any) authentication
+mechanism; thus key invalidation would be the best form of locking
+out suspected compromised keys.  Key regeneration is automated to
+avoid timeouts which may become annoying and possibly even force
+the use of a password on a potentially key-log compromised system.
