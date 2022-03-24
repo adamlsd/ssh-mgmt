@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+keytype=rsa
+keybits=16384
+
 if [ -z $1 ] ; then
     echo "Need a hostname"
     exit
@@ -21,7 +24,7 @@ mkdir -p ~/.ssh/newkeys
 #echo rm -f ${keyname}
 rm -f ~/.ssh/newkeys/${keyname}
 
-ssh-keygen -t ecdsa -b 521 -V +6w -f ~/.ssh/newkeys/${keyname} -P ""
+ssh-keygen -t ${keytype} -b ${keybits} -V +6w -f ~/.ssh/newkeys/${keyname}
 
 ssh ${target} "mkdir -p .ssh/incoming; rm -f .ssh/incoming/${keyname}" || exit
 scp ~/.ssh/newkeys/${keyname}.pub ${target}:.ssh/incoming/id_${hostname}.pub || exit
