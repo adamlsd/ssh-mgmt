@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 keytype=rsa
-keybits=16384
+keybits=5888
 
-if [ -z $1 ] ; then
+if [ -z $1 ]
+then
     echo "Need a hostname"
     exit
 fi
