@@ -12,12 +12,15 @@ echo hostname: ${hostname}
 keyname=id_${hostname}-${targetname}
 echo keyname: ${keyname}
 
-echo rm -f ${keyname}
-rm -f ${keyname}
+#echo rm -f ${keyname}
+#rm -f ${keyname}
 
 #exit
 
 mkdir -p ~/.ssh/newkeys
+#echo rm -f ${keyname}
+rm -f ~/.ssh/newkeys/${keyname}
+
 ssh-keygen -t ecdsa -b 521 -V +6w -f ~/.ssh/newkeys/${keyname} -P ""
 
 ssh ${target} "mkdir -p .ssh/incoming; rm -f .ssh/incoming/${keyname}" || exit
